@@ -1,0 +1,48 @@
+<mvc:View controllerName="employeesui5.controller.App"
+          xmlns:mvc="sap.ui.core.mvc" 
+          displayBlock="true"
+          xmlns="sap.m"
+          xmlns:core="sap.ui.core"
+          xmlns:f="sap.f">
+    <Shell id="shell">
+        <App id="app"> 
+            <pages>
+                <Page id="vAPage1"
+                      showHeader="false">
+                    <content>
+                        <f:FlexibleColumnLayout id="fcl"
+                                                backgroundDesign="Solid"
+                                                layout="{jsonLayout>/ActiveKey}">
+                            <f:beginColumnPages>
+                                <mvc:XMLView id="masterEmployeeView"
+                                             viewName="employeesui5.view.MasterEmployee"/>
+                            </f:beginColumnPages>
+                            <f:midColumnPages>
+                                <mvc:XMLView id="employeeDetailsView"
+                                             viewName="employeesui5.view.EmployeeDetails"/>
+                            </f:midColumnPages>
+                            <f:endColumnPages>
+                                <Page id="vAPage2">
+                                </Page>
+                            </f:endColumnPages>
+                        </f:FlexibleColumnLayout>
+                    </content>
+                    <footer>
+                        <Toolbar id="vAToolbar">
+                            <Label id="vALabel"
+                                   text="{i18n>layout}"
+                                   class="sapUiSmallMargin"/>
+                            <Select id="vASelect"
+                                    items="{jsonLayout>/Layout}"
+                                    selectedKey="{jsonLayout>/ActiveKey}">
+                                <core:Item id="vAItem"
+                                           key="{jsonLayout>Key}"
+                                           text="{jsonLayout>Text}"/>
+                            </Select>
+                        </Toolbar>
+                    </footer>
+                </Page>
+            </pages>
+        </App>
+    </Shell>
+</mvc:View>

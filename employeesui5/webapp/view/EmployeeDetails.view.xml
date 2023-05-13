@@ -1,0 +1,107 @@
+<mvc:View controllerName="employeesui5.controller.EmployeeDetails"
+          xmlns:mvc="sap.ui.core.mvc" 
+          displayBlock="true"
+          xmlns="sap.m"
+          xmlns:core="sap.ui.core">
+    <Page id="vEPage1"
+          title="{i18n>employeeDetails}">        
+        <Panel id="vEPanel1">
+            <FlexBox id="vEFlexBox1"
+                     height="65px"
+                     alignItems="Center"
+                     justifyContent="Center">
+                <items>
+                    <Text id="vEText1"
+                          text="{odataNorthwind>LastName}, {odataNorthwind>FirstName}"
+                          class="boldText"/>
+                </items>
+            </FlexBox>
+            <FlexBox id="vEFlexBox2"
+                     height="65px"
+                     alignItems="Start"
+                     justifyContent="SpaceBetween">
+                <items>
+                    <VBox id="vEVBox1">
+                        <Text id="vEText2"
+                              text="{i18n>employeeId}"
+                              class="boldText sapUiTinyMarginEnd"/>
+                        <Text id="vEText3"
+                              text="{odataNorthwind>EmployeeID}"/>
+                    </VBox>
+                    <VBox id="vEVBox2">
+                        <Text id="vEText4"
+                              text="{i18n>titleEmployee}"
+                              class="boldText"/>
+                        <Text id="vEText5"
+                              text="{odataNorthwind>Title}"/>
+                    </VBox>
+                </items>
+            </FlexBox>
+            <FlexBox id="vEFlexBox3"
+                     alignItems="Start">
+                <items>
+                    <HBox id="vEHBox1">
+                        <Text id="vEText6"
+                              text="{i18n>countryCode}"
+                              class="boldText sapUiTinyMarginEnd"/>
+                        <Text id="vEText7" 
+                              text="{odataNorthwind>Country}"/>
+                        <layoutData>
+                            <FlexItemData id="vEFlexItemData1"
+                                          growFactor="3"/>
+                        </layoutData>
+                    </HBox>
+                    <HBox id="vEHBox2">
+                        <Text id="vEText8"
+                              text="{i18n>city}"
+                              class="boldText sapUiTinyMarginEnd"/>
+                        <Text id="vEText9"
+                              text="{odataNorthwind>City}"/>
+                        <layoutData>
+                            <FlexItemData id="vEFlexItemData2"
+                                          growFactor="2"/>
+                        </layoutData>
+                    </HBox>
+                    <FlexBox id="vEFlexBox4"
+                             direction="Row"
+                             alignItems="Start">
+                        <Text id="vEText10"
+                              text="{i18n>postalCode}"
+                              class="boldText sapUiTinyMarginEnd"/>
+                        <Text id="vEText11"
+                              text="{odataNorthwind>PostalCode}"/>
+                        <layoutData>
+                            <FlexItemData id="vEFlexItemData3"
+                                          growFactor="1"/>
+                        </layoutData>
+                    </FlexBox>
+                </items>
+            </FlexBox>
+        </Panel>
+        <Panel id="vEPanel2"
+               class="sapUiSizeCompact"
+               backgroundDesign="Transparent">
+            <headerToolbar>
+                <Toolbar id="vEToolbar">
+                    <Title id="vETitle"
+                           text="{i18n>incidence} {= ${odataNorthwind>Country} !== 'US' ? ${i18n>europe} : ${i18n>us}}"/>
+                    <ToolbarSpacer id="vEToolbarSpacer"/>
+                    <Button id="vEBtn"
+                            text="{i18n>createIncidence}"
+                            press="onCreateIncidence"/>
+                </Toolbar>
+            </headerToolbar>
+            <Panel id="tableIncidence"
+                   class="sapUiNodeContentPadding"
+                   backgroundDesign="Transparent">
+            </Panel>
+        </Panel>
+        <Panel id="vEPanel3"
+               class="sapUiSizeCompact"
+               backgroundDesign="Transparent"
+               headerText="{i18n>orders}">
+            <core:Fragment fragmentName="employeesui5.fragment.TableOrders"
+                           type="XML"/>
+        </Panel>
+    </Page>
+</mvc:View>

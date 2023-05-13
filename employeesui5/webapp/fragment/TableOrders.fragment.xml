@@ -1,0 +1,41 @@
+<core:FragmentDefinition xmlns:core ="sap.ui.core"
+                         xmlns="sap.m">
+    <Table id="fTOTable"
+           items="{odataNorthwind>Orders}"
+           width="700px">
+        <columns>
+            <Column id="fTOColumn1">
+                <header>
+                    <Label id="fTOLabel1"
+                           text="{i18n>orderID}"/>
+                </header>
+            </Column>
+            <Column id="fTOColumn2">
+                <header>
+                    <Label id="fTOLabel2"
+                           text="{i18n>freight}"/>
+                </header>
+            </Column>
+            <Column id="fTOColumn3">
+                <header>
+                    <Label id="fTOLabel3"
+                           text="{i18n>shipAddress}"/>
+                </header>
+            </Column>
+        </columns>
+        <items>
+            <ColumnListItem id="fTOColumnListItem"
+                            type="Navigation"
+                            press="toOrderDetails">
+                <cells>
+                    <Label id="fTOLabel4"
+                           text="{odataNorthwind>OrderID}"/>
+                    <Label id="fTOLabel5"
+                           text="{odataNorthwind>Freight}"/>
+                    <Label id="fTOLabel6"
+                           text="{odataNorthwind>ShipAddress}"/>
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table>
+</core:FragmentDefinition>

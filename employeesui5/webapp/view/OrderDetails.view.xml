@@ -1,0 +1,107 @@
+<mvc:View xmlns:upload="sap.m.upload" controllerName="employeesui5.controller.OrderDetails"
+          xmlns:mvc="sap.ui.core.mvc" 
+          displayBlock="true"
+          xmlns="sap.m"
+          xmlns:core="sap.ui.core"
+          xmlns:l="sap.ui.layout"
+          xmlns:f="sap.ui.layout.form"
+          xmlns:sc="employeesui5.control">
+    <Page id="vODPage">
+        <customHeader>
+            <Bar id="vODBar">
+                <contentLeft>
+                    <Button id="vODBtn"
+                            icon="sap-icon://nav-back"
+                            press="onBack"/>
+                </contentLeft>
+                <contentMiddle>
+                    <Text id="vODText"
+                          text="{i18n>orderID} {odataNorthwind>OrderID}"/>
+                </contentMiddle>
+            </Bar>            
+        </customHeader>
+        <content>
+            <Panel id="vODPanel1"
+                   headerText="{i18n>customerId}: {odataNorthwind>CustomerID}">
+                <l:Grid id="vODGrid"
+                        defaultSpan="L6 M6 S12">
+                    <f:Form id="vODForm"
+                            editable="false">
+                        <f:layout>
+                            <f:ResponsiveGridLayout id="vODResponsiveGridLayout"
+                                                    labelSpanL="6"
+                                                    labelSpanM="6"
+                                                    labelSpanS="12"/>                            
+                        </f:layout>
+                        <f:formContainers>
+                            <f:FormContainer id="vODFormContainer">
+                                <f:formElements>
+                                    <f:FormElement id="vODFormElement1"
+                                                   label="{i18n>orderDate}">
+                                        <f:fields>
+                                            <Text id="vODText1"
+                                                  text="{path:'odataNorthwind>OrderDate', type:'sap.ui.model.odata.type.Date'}"/>
+                                        </f:fields>
+                                    </f:FormElement>
+                                    <f:FormElement id="vODFormElement2"
+                                                   label="{i18n>freight}">
+                                        <f:fields>
+                                            <Text id="vODText2"
+                                                  text="{odataNorthwind>Freight}"/>
+                                        </f:fields>
+                                    </f:FormElement>
+                                    <f:FormElement id="vODFormElement3"
+                                                   label="{i18n>shipName}">
+                                        <f:fields>
+                                            <Text id="vODText3"
+                                                  text="{odataNorthwind>ShipName}"/>
+                                        </f:fields>
+                                    </f:FormElement>
+                                    <f:FormElement id="vODFormElement4"
+                                                   label="{i18n>shipAddress}">
+                                        <f:fields>
+                                            <Text id="vODText4"
+                                                  text="{odataNorthwind>ShipAddress}, {odataNorthwind>ShipCity}, {odataNorthwind>ShipCountry}"/>
+                                        </f:fields>
+                                    </f:FormElement>
+                                </f:formElements>
+                            </f:FormContainer>
+                        </f:formContainers>
+                    </f:Form>
+                    <FlexBox id="vODFlexBox"
+                             class="sapUiTinyMarginTop">
+                        <sc:Signature id="signature">
+                        </sc:Signature>
+                        <Button id="vODBtn1"
+                                text="{i18n>clear}"
+                                press="onClearSignature"
+                                class="sapUiTinyMarginBegin"/>
+                    </FlexBox>
+                </l:Grid>            
+                <upload:UploadSet id="uploadSet"                                  
+                                  maxFileNameLength="55"
+                                  maxFileSize="10"
+                                  uploadUrl="employeesui5/sap/opu/odata/sap/YSAPUI5_SRV_01/FilesSet"
+                                  uploadCompleted="onFileUploadComplete"
+                                  beforeUploadStarts="onFileBeforeUpload"
+                                  afterItemRemoved ="onFileDeleted"/>
+                <Panel id="vODPanel"
+                       headerText="{i18n>orderProducts}">
+                    <List id="vODList"
+                          items="{path: 'odataNorthwind>Order_Details', parameters: {expand: 'Product'}, factory: '.factoryOrderDetails'}"/>
+                </Panel>
+            </Panel>
+        </content>
+        <footer>
+            <Toolbar id="vODToolbar">
+                <ToolbarSpacer id="vODToolbarSpacer"/>
+                <Button id="vODBtn2"
+                        text="{i18n>downloadFile}"
+                        press="onDownloadFile"/>
+                <Button id="vODBtn3"
+                        text="{i18n>saveSignature}"
+                        press="onSaveSignature"/>
+            </Toolbar>
+        </footer>        
+    </Page>        
+</mvc:View>

@@ -1,0 +1,50 @@
+<mvc:View controllerName="employeesui5.controller.MasterEmployee"
+    xmlns:mvc="sap.ui.core.mvc" 
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">           
+        <Page id="page" 
+              title="{i18n>title}">
+            <content>
+                <HBox id="hbox"
+                      wrap="Wrap">
+                    <Label id="labelEmployee"
+                           text="{i18n>labelEmployee}"
+                           class="sapUiSmallMargin"
+                           labelFor="inputEmployee"/>
+                    <Input id="inputEmployee"
+                           value="{jsonCountries>/EmployeeId}"
+                           maxLength="10"
+                           width="200px"
+                           class="sapUiSmallMarginEnd sapUiSmallMarginTop"/>  
+                    <Label id="labelCountry"
+                           text="{i18n>labelCountry}"
+                           class="sapUiSmallMargin"
+                           labelFor="slCountry"/>
+                    <Select id="slCountry"
+                            selectedKey="{jsonCountries>/CountryKey}"
+                            items="{jsonCountries>/ListCountry}"
+                            forceSelection="false"
+                            class="sapUiSmallMarginTop sapUiSmallMarginEnd">
+                        <items>
+                            <core:Item id="country1"
+                                       key="{jsonCountries>Key}"
+                                       text="{jsonCountries>Text}"/>
+                        </items>
+                    </Select>
+                    <Button id="btnFilter"
+                            text="{i18n>btnFilter}"
+                            icon="sap-icon://search"
+                            press=".onFilter"
+                            class="sapUiSmallMarginEnd sapUiSmallMarginTop"/>
+                    <Button id="btnClearFilter"
+                            text="{i18n>btnClearFilter}"
+                            icon="sap-icon://clear-filter"
+                            press=".onClearFilter"
+                            class="sapUiSmallMarginEnd sapUiSmallMarginTop"/>
+                </HBox>
+                <core:Fragment fragmentName="employeesui5.fragment.TableEmployee"
+                               type="XML"/>
+            </content>
+        </Page>
+</mvc:View>
