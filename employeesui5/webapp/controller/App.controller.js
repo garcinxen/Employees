@@ -146,7 +146,7 @@ sap.ui.define([
                             data.results[incidence]._validateDate = true;
                             data.results[incidence].enabledSave = false;
 
-                            let newIncidence = sap.ui.xmlfragment("employeesv2.fragment.NewIncidence", this._detailEmployeeView.getController());
+                            let newIncidence = sap.ui.xmlfragment("employeesui5.fragment.NewIncidence", this._detailEmployeeView.getController());
                             this._detailEmployeeView.addDependent(newIncidence);
                             newIncidence.bindElement("incidenceModel>/" + incidence);
                             tableIncidence.addContent(newIncidence);

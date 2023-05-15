@@ -1,64 +1,48 @@
 <core:FragmentDefinition xmlns:core ="sap.ui.core"
                          xmlns="sap.m">
-    <Panel id="fNIPanel">
+    <Panel>
         <headerToolbar>
-            <Toolbar id="fNIToolbar">
-                <core:Icon id="fNIIcon1"
-                           src="{= ${incidenceModel>Type} === '0' ? 'sap-icon://accept' : 
+            <Toolbar>
+                <core:Icon src="{= ${incidenceModel>Type} === '0' ? 'sap-icon://accept' : 
                                    ${incidenceModel>Type} === '1' ? 'sap-icon://alert' : 
                                    ${incidenceModel>Type} === '2' ? 'sap-icon://decline' : ''}"/>
-                <Title id="fNITitle"
-                       text="{i18n>incidence} {= ${incidenceModel>IncidenceId} ? parseInt(${incidenceModel>IncidenceId}) : ''} 
+                <Title text="{i18n>incidence} {= ${incidenceModel>IncidenceId} ? parseInt(${incidenceModel>IncidenceId}) : ''} 
                              {path : 'incidenceModel>CreationDate', formatter:'.Formatter.dateFormat'}"/>
-                <ToolbarSpacer id="fNIToolbarSpacer"/>
-                <Button id="fNIBtn"
-                        icon="sap-icon://save"
+                <ToolbarSpacer/>
+                <Button icon="sap-icon://save"
                         press="onSaveIncidence"
                         enabled="{= ${incidenceModel>enabledSave} === true}"/>
-                <core:Icon id="fNIIcon2"
-                           src="sap-icon://delete"
+                <core:Icon src="sap-icon://delete"
                            press="onDeleteIncidence"/>
             </Toolbar>
         </headerToolbar>
         <content>
-            <HBox id="fNIHbox">
-                <VBox id="fNIVBox1"
-                      class="sapUiSmallMarginEnd">
-                    <Label id="fNILabel1"
-                           text="{i18n>incidenceDate}"
+            <HBox>
+                <VBox class="sapUiSmallMarginEnd">
+                    <Label text="{i18n>incidenceDate}"
                            required="true"/>
-                    <DatePicker id="fNIDatepicker"
-                                dateValue="{incidenceModel>CreationDate}"
+                    <DatePicker dateValue="{incidenceModel>CreationDate}"
                                 change="updateIncidenceCreationDate"
                                 valueState="{incidenceModel>CreationDateState}"/>
                 </VBox>
-                <VBox id="fNIVBox2"
-                      class="sapUiSmallMarginEnd"
+                <VBox class="sapUiSmallMarginEnd"
                       visible="{= ${incidenceModel>CreationDate} !== '' &amp;&amp; ${incidenceModel>CreationDate} !== undefined}">
-                    <Label id="fNILabel2"
-                           text="{i18n>incidenceReason}"
+                    <Label text="{i18n>incidenceReason}"
                            required="true"/>
-                    <Input id="fNIInput"
-                           value="{incidenceModel>Reason}"
+                    <Input value="{incidenceModel>Reason}"
                            change="updateIncidenceReason"
                            valueState="{incidenceModel>ReasonState}"/>
                 </VBox>
-                <VBox id="fNIVBox3"
-                      visible="{= ${incidenceModel>CreationDate} !== '' &amp;&amp; ${incidenceModel>CreationDate} !== undefined}">
-                    <Text id="fNIText"
-                          text="{i18n>incidenceType}"/>
-                    <Select id="fNISelect"
-                            selectedKey="{incidenceModel>Type}"
+                <VBox visible="{= ${incidenceModel>CreationDate} !== '' &amp;&amp; ${incidenceModel>CreationDate} !== undefined}">
+                    <Text text="{i18n>incidenceType}"/>
+                    <Select selectedKey="{incidenceModel>Type}"
                             forceSelection="false"
                             change="updateIncidenceType">
-                        <core:Item id="fNIItem1"
-                                   key="0"
+                        <core:Item key="0"
                                    text="{i18n>incidenceCorrect}"/>
-                        <core:Item id="fNIItem2"
-                                   key="1"
+                        <core:Item key="1"
                                    text="{i18n>incidencePending}"/>
-                        <core:Item id="fNItem3"
-                                   key="2"
+                        <core:Item key="2"
                                    text="{i18n>incidenceError}"/>
                     </Select>
                 </VBox>
