@@ -211,7 +211,7 @@ sap.ui.define([
                 } else {
                     aItems.forEach((oItem)=>{
                         let sPath = oItem.getBindingContext("incidenceModel").getPath();
-                        window.open("/sap/opu/odata/sap/YSAPUI5_SRV_01" + sPath + "/$value");
+                        window.open("/employeesui5/sap/opu/odata/sap/YSAPUI5_SRV_01" + sPath + "/$value");
                     });
                 }
             }
