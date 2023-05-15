@@ -19,15 +19,15 @@ sap.ui.define([
                 let oView = this.getView();
                 
                 let oJSONModelEmpl = new sap.ui.model.json.JSONModel();
-                oJSONModelEmpl.loadData("./model/json/Employees.json");
+                oJSONModelEmpl.loadData("model/json/Employees.json");
                 oView.setModel(oJSONModelEmpl, "jsonEmployees");
 
                 let oJSONModelCoun = new sap.ui.model.json.JSONModel();
-                oJSONModelCoun.loadData("./model/json/Countries.json");
+                oJSONModelCoun.loadData("model/json/Countries.json");
                 oView.setModel(oJSONModelCoun, "jsonCountries");
 
                 let oJSONModelLayout = new sap.ui.model.json.JSONModel();
-                oJSONModelLayout.loadData("./model.json/Layout.json");
+                oJSONModelLayout.loadData("model/json/Layout.json");
                 oView.setModel(oJSONModelLayout, "jsonLayout");
 
                 let oJSONModelConfig = new sap.ui.model.json.JSONModel({

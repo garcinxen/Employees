@@ -16,5 +16,10 @@
         "uaa.user"
       ]
     }
-  ]
+  ],
+  "oauth2-configuration": {
+    "redirect-uris": [
+      "https://a3b6dc41trial-dev-employees-approuter.cfapps.us10-001.hana.ondemand.com/**"
+    ]
+  }
 }
